@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Te amo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 80px auto;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .foto {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            border: 6px solid #ffb6c1;
+            box-shadow: 0 0 25px rgba(255, 105, 135, 0.5);
+            transition: transform 0.4s ease;
+        }
+
+        .foto:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 56px;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 14px 30px;
+            background-color: #ff4e78;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #e91e63;
+        }
+
+        #declaracao {
+            font-size: 18px;
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 2s ease, transform 1.5s ease;
+            color: #444;
+            text-align: left;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #fff5f8;
+            border-radius: 12px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            white-space: pre-wrap;
+        }
+
+        #declaracao.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(45deg);
+            animation: fall 6s linear infinite;
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 0.8;
+            }
+            100% {
+                top: 110%;
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 40px 15px;
+                padding: 25px 15px;
+            }
+
+            .foto {
+                width: 220px;
+                height: 220px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://drive.google.com/file/d/1z_W0_3rFbkWZghGxuYFVe8zy3FNJhsNL/view?usp=drive_link" alt="Ana Laura" class="foto">
+    <h1>Ana Laura Bueno de Oliveira</h1>
+    <button onclick="mostrarDeclaracao()">Clique aqui Bela Adormecida</button>
+    <p id="declaracao"></p>
+</div>
+
+<script>
+    function mostrarDeclaracao() {
+        const texto = `Desde o primeiro momento em que te vi, teve algo em você que me prendeu. 
+Talvez tenha sido o teu sorriso esse sorriso que ilumina tudo ao redor, que acalma e encanta ao mesmo tempo. 
+Ele é daqueles que a gente guarda na memória, sabe? Que aparece nos pensamentos nos momentos mais aleatórios e faz a gente sorrir também, sem nem perceber.
+
+Mas não é só isso. O que mais me admira em você é a tua força. 
+Você é uma guerreira, daquelas que não desistem fácil, que enfrentam os dias difíceis com coragem e ainda conseguem cuidar dos outros no meio disso tudo. 
+Isso me inspira demais. Você é especial de um jeito único, daqueles que a gente encontra uma vez só na vida.
+
+E eu quero ser sincero: não quero só ficar contigo. 
+Quero te conhecer de verdade, te acompanhar de perto, rir contigo, sonhar junto. 
+Quero construir algo real, leve, mas com propósito. 
+Não estou aqui só por um momento estou aqui porque vejo um futuro com você.
+
+Se um dia você sentir o mesmo, quero que saiba que estarei aqui. 
+Pra caminhar do teu lado, pra somar, pra cuidar e, principalmente, pra te fazer feliz. 💕`;
+
+        const declaracao = document.getElementById("declaracao");
+        declaracao.textContent = texto;
+        declaracao.classList.add("visivel");
+    }
+
+    function criarCoracao() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(criarCoracao, 400);
+</script>
+
+</body>
+</html>
